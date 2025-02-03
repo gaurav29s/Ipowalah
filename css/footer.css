@@ -1,0 +1,57 @@
+/* Ensure the page takes at least the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure the content section grows to fill available space */
+body {
+    flex: 1;
+}
+
+/* Footer styling to stay at the bottom */
+.footer_main {
+    background-color: #333; /* Same as your original footer color */
+    color: #fff; /* Footer text color */
+    padding: 20px 0; /* Padding for spacing inside the footer */
+    text-align: center; /* Text alignment inside the footer */
+    width: 100%; /* Ensure footer spans the entire width */
+    position: relative; /* Ensure no unexpected positioning issues */
+    margin-top: auto; /* This will push the footer to the bottom */
+}
+
+.footer-left, .footer-center, .footer-right {
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
+    padding: 10px;
+}
+
+/* Styling for footer links */
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.footer-icons a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.footer-icons a:hover {
+    color: #00aced; /* Example hover color */
+}
+
+/* Optional: styling for phone and email sections in footer */
+.footer-center i {
+    margin-right: 10px;
+}
+
+.footer-center p {
+    display: inline;
+    margin: 0;
+}

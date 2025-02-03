@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to  Ipowalah</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div id="preloader">
+        <video autoplay muted loop width="800" height="800">
+            <source src="/images/4.mp4" type="video/mp4">
+        </video>
+    </div>
+    
+    <div class="logo">
+        <img src="/images/theme.jpg" id="op" width="50" height="50">
+    </div>
+    <div class="wrapper">
+        <form action="#">
+            <h2>Login to  Ipowalah</h2>
+            <div class="input-field">
+                <input type="text" required>
+                <label>Enter your email</label>
+            </div>
+            <div class="input-field">
+                <input type="password" required>
+                <label>Enter your password</label>
+            </div>
+            <div class="forget">
+                <label for="remember">
+                    <input type="checkbox" id="remember">
+                    <p>Remember me</p>
+                </label>
+                <a href="#" id="forgot-password">Forgot password?</a>
+            </div>
+            <button type="submit">
+                <a href="/index.html">Log In</a>
+            </button>
+            <div class="register">
+                <p>Don't have an account? <a href="/registration.html">Register</a></p>
+            </div>
+            <!-- OTP section -->
+            <div class="otp-section" style="display: none;">
+                <div class="input-field">
+                    <input type="text" id="otp" required>
+                    <label>Enter OTP</label>
+                </div>
+                <button type="submit" id="verify-otp">Verify OTP</button>
+                <div class="new-password-section" style="display: none;">
+                    <div class="input-field">
+                        <input type="password" id="new-password" required>
+                        <label>Enter new password</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="password" id="confirm-new-password" required>
+                        <label>Confirm new password</label>
+                    </div>
+                    <button type="submit" id="update-password">Update Password</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        const forgotPassword = document.getElementById('forgot-password');
+        const otpSection = document.querySelector('.otp-section');
+        const newPasswordSection = document.querySelector('.new-password-section');
+        const verifyOtpButton = document.getElementById('verify-otp');
+        let generatedOtp;
+
+        forgotPassword.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Generate OTP and send to email (for simulation, just log it)
+            generatedOtp = Math.floor(100000 + Math.random() * 900000);
+            console.log('OTP:', generatedOtp);
+            // Display OTP section
+            otpSection.style.display = 'block';
+        });
+
+        verifyOtpButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const enteredOtp = document.getElementById('otp').value;
+            // Check if the entered OTP matches the generated OTP
+            if (enteredOtp == generatedOtp) {
+                alert('OTP Verified');
+                otpSection.style.display = 'none';
+                newPasswordSection.style.display = 'block';
+            } else {
+                alert('Invalid OTP, please try again');
+            }
+        });
+    </script>
+    
+    <script src="/js/script.js"></script>
+</body>
+</html>

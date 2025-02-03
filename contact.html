@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+     <head> 
+       <meta charset="utf-8">
+       <title> Contact </title>
+	 <style>
+	 body{
+	  margin:0px;
+	  padding:0px;
+	 
+	   background-color:#efefef;
+	   font-family:sans-serif;
+	   
+	 }
+	 .contact-box
+	 {
+	 margin-left:950px;
+	 margin-top:300px;
+	 width:500px;
+	 height:540px;
+	 background-color:#fff;
+	 box-shadow:25px 25px 25px #999;	 
+	 border-radius:14px;
+	
+	 transform:translate(-50%,-50%);
+	 position:absolute;
+	 
+	 }
+	 .input-field
+	 {
+	 
+	 width:400px;
+	 height:40px;
+	 margin-top:30px;
+	 margin-left:40px;
+	 padding:10px;
+	 border:1px solid #777;
+	 border-radius:14px;
+	 outline:none;
+	 }
+	 .textarea-field
+	 { 
+	   margin-left:40px;
+	   margin-top:50px;
+	   height:100px;
+	   width:410px;
+	   border:1px solid #777;
+	   border-radius:14px;
+	   padding-right:10px;
+	   padding-top:10px;
+	 }
+	 .btnsubmit
+	 {  
+	   width:410px;
+	    height:45px;
+	    font-size:20px;
+		margin-left:49px;
+		text-align:center;
+	    border-radius:24px;
+		color:solid black;
+		background-color:#ff6600;
+		margin-top:20px;
+	 }
+	 .heading1
+	 {
+	   font-family:lato,sans-serif;
+	   font-size:24px;
+	   text-align:center;
+	   margin-left:-65px;
+	 }
+	 
+	 .logo {
+		width: 5%;
+		float: right;
+		line-height: 100px;
+	}
+	#preloader {
+		position: fixed; 
+		top: 0;
+		left: 0;
+		width: 100%; 
+		height: 100%; 
+		background-color: #fff; 
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 9999; 
+	  }
+	 </style>
+    </head>
+ 
+    <body>
+	<div id="preloader">
+		<video autoplay muted loop width="800" height="800">
+		<source src="/images/4.mp4" type="video/mp4">
+		</video>
+	</div>
+	<div class="logo">
+		<img src="/images/theme.jpg" id="op" width="50" height="50">
+	</div>
+	<h1 class="heading1"> HAVE SOME QUESTION'S?</h1><hr>
+	<div class="contact-box">
+		<form name="frmentry" id="frmentry" method="POST" action="http://127.0.0.1:5000/api/contact">
+			<input type="text" class="input-field" name="name" placeholder="Your name" autofocus required>
+			<input type="email" class="input-field" name="email" placeholder="Your email" required>
+			<input type="text" class="input-field" name="subject" placeholder="Subject" required>
+			<textarea class="textarea-field" name="message" placeholder="Your question" required></textarea>
+			<input type="submit" name="btnsubmit" class="btnsubmit" value="SEND MESSAGE"/>
+		  </form>
+		</div>
+	 
+    <script>
+        const form = document.getElementById('contact-form');
+        const responseMessage = document.getElementById('response-message');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Collect form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value,
+            };
+
+            // Send the data to the backend API using fetch
+            try {
+                const response = await fetch('http://127.0.0.1:3000/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.ok) {
+                    responseMessage.innerText = 'Your message was sent successfully!';
+                    form.reset();
+                } else {
+                    responseMessage.innerText = 'There was an error sending the message.';
+                }
+            } catch (error) {
+                responseMessage.innerText = 'Network error. Please try again later.';
+            }
+        });
+    </script>
+		<script src="/js/script.js"></script>
+	
+	</body>
+	</html>

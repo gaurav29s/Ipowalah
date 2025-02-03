@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ipowalah Registration</title>
+    <link rel="stylesheet" href="/css/registration.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="preloader">
+        <video autoplay muted loop width="800" height="800">
+            <source src="/images/4.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="logo">
+        <img src="/images/theme.jpg" id="op" width="50" height="50">
+    </div>
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+            <form action="/index.html">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Username</span>
+                        <input type="text" placeholder="Enter your username" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="tel" placeholder="Enter your number" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                <div class="gender-details">
+                    <input type="radio" name="gender" id="dot-1">
+                    <input type="radio" name="gender" id="dot-2">
+                    <input type="radio" name="gender" id="dot-3">
+                    <span class="gender-title">Gender</span>
+                    <div class="category">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="gender">Male</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="gender">Female</span>
+                        </label>
+                        <label for="dot-3">
+                            <span class="dot three"></span>
+                            <span class="gender">Prefer not to say</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            const password = document.querySelector('input[type="password"]').value;
+            const confirmPassword = document.querySelector('input[type="password"][placeholder="Confirm your password"]').value;
+            if (password !== confirmPassword) {
+                alert('Password and Confirm Password must be the same');
+                e.preventDefault();
+            }
+        });
+    </script>
+   <script>
+    let op = document.querySelector("#op");
+    let curr = "Light";
+    op.addEventListener("click", () => {
+    if (curr === "Light") {
+        curr = "Dark";
+        document.querySelector("body").style.background = "black";
+        document.querySelector("body").style.color = "black";
+    } else {
+        curr = "Light";
+        document.querySelector("body").style.background = "white";
+        document.querySelector("body").style.color = "black";  
+    }
+    console.log(curr);
+});
+window.onload = function() {
+            var preloader = document.getElementById("preloader");
+            setTimeout(function() {
+              preloader.style.display = "none";
+            }, 3000);
+          };
+   </script>
+</body>
+</html>
